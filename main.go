@@ -30,9 +30,10 @@ func memo(w http.ResponseWriter, r *http.Request){
 
 	a[0] = int32(rand.Int())
 	a[1] = int32(rand.Int())
+	a[2] = int32(rand.Int())
 
-	for i := 2; i < len(a); i++ {
-		a[i] = a[i-1] - a[i-2]
+	for i := 3; i < len(a); i++ {
+		a[i] = a[i-3] * a[i-2] - a[i-1]
 	}
 
 	fmt.Fprintf(w, "The answer is %d", a[len(a)-1])
